@@ -11,6 +11,7 @@
     <modules>
         <module>eureka</module>
         <module>wechat</module>
+        <module>spider</module>
     </modules>
 
     <properties>
