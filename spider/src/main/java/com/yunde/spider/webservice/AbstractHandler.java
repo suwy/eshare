@@ -13,18 +13,18 @@ import javax.xml.namespace.QName;
 import java.util.*;
 
 /**
- * Created by laisy on 2018/8/13.
+ * Created by laisy on 2018/8/14.
  */
-public class WSAbstractFactory {
+public abstract class AbstractHandler {
 
-    private List list = new ArrayList();
     private final WSEntity entity;
+    private List list = new ArrayList();
 
-    public WSAbstractFactory(WSEntity entity) {
+    public AbstractHandler(WSEntity entity) {
         this.entity = entity;
     }
 
-    public OMElement send() {
+    protected OMElement send() {
         try {
             Options options = new Options();
             EndpointReference targetEPR = new EndpointReference(entity.getUrl());
@@ -42,7 +42,7 @@ public class WSAbstractFactory {
         }
     }
 
-    public void parse(OMElement result, String nodeName) {
+    protected void parse(OMElement result, String nodeName) {
         Iterator iterator = result.getChildElements();
         QName qName = new QName(nodeName);
         while (iterator.hasNext()) {
@@ -61,8 +61,7 @@ public class WSAbstractFactory {
         }
     }
 
-    public List getNodeList(String parentNode) {
-        parse(send(), parentNode);
-        return this.list;
+    protected List getList() {
+        return list;
     }
 }

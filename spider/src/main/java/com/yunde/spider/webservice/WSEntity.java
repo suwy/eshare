@@ -2,6 +2,7 @@ package com.yunde.spider.webservice;
 
 /**
  * Created by laisy on 2018/8/13.
+ * WebService 参数模型
  */
 public class WSEntity {
 
@@ -10,39 +11,30 @@ public class WSEntity {
     private String namespace;
     private String method;
 
-    public String getUrl() {
-        return url;
+    public WSEntity(String url, String action, String namespace, String method) {
+        this.url = url;
+        this.action = action;
+        this.namespace = namespace;
+        this.method = method;
     }
 
-    public WSEntity setUrl(String url) {
-        this.url = url;
-        return this;
+    public String getUrl() {
+        return url;
     }
 
     public String getAction() {
         return action;
     }
 
-    public WSEntity setAction(String action) {
-        this.action = action;
-        return this;
-    }
-
     public String getNamespace() {
         return namespace;
-    }
-
-    public WSEntity setNamespace(String namespace) {
-        this.namespace = namespace;
-        return this;
     }
 
     public String getMethod() {
         return method;
     }
 
-    public WSEntity setMethod(String method) {
-        this.method = method;
-        return this;
+    public String toString() {
+        return String.format(" url:%s\n action:%s\n namespace:%s\n method:%s\n",this.url, this.action, this.namespace, this.method);
     }
 }
