@@ -1,5 +1,7 @@
 package com.yunde.spider.webservice;
 
+import org.apache.axiom.om.OMElement;
+
 import java.util.List;
 
 /**
@@ -11,8 +13,8 @@ public class WSHandler extends AbstractHandler {
         super(entity);
     }
 
-    public List getNodeList(String parentNode) {
-        parse(send(), parentNode);
+    public List getNodeList(OMElement element, String parentNode) {
+        parse(element, parentNode);
         return super.getList();
     }
 }

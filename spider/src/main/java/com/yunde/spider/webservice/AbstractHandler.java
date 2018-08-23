@@ -8,8 +8,11 @@ import org.apache.axis2.AxisFault;
 import org.apache.axis2.addressing.EndpointReference;
 import org.apache.axis2.client.Options;
 import org.apache.axis2.client.ServiceClient;
+import org.apache.cxf.jaxws.endpoint.dynamic.JaxWsDynamicClientFactory;
 
 import javax.xml.namespace.QName;
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.util.*;
 
 /**
@@ -35,11 +38,48 @@ public abstract class AbstractHandler {
             OMFactory fac = OMAbstractFactory.getOMFactory();
             OMNamespace omNs = fac.createOMNamespace(entity.getNamespace(), "");
             OMElement method = fac.createOMElement(entity.getMethod(), omNs);
+            System.out.println(entity.toString());
             return sender.sendReceive(method);
         } catch (AxisFault axisFault) {
             axisFault.printStackTrace();
             return null;
         }
+    }
+
+    protected OMElement sendByAxis2() {
+        try {
+            Options options = new Options();
+            EndpointReference targetEPR = new EndpointReference(entity.getUrl());
+            options.setTo(targetEPR);
+            options.setAction(entity.getAction());
+            ServiceClient sender = new ServiceClient();
+            sender.setOptions(options);
+            OMFactory fac = OMAbstractFactory.getOMFactory();
+            OMNamespace omNs = fac.createOMNamespace(entity.getNamespace(), "");
+            OMElement method = fac.createOMElement(entity.getMethod(), omNs);
+            System.out.println(entity.toString());
+            return sender.sendReceive(method);
+        } catch (AxisFault axisFault) {
+            axisFault.printStackTrace();
+            return null;
+        }
+    }
+
+    protected String sendByCxf() {
+        try {
+            System.out.println(entity.toString());
+            JaxWsDynamicClientFactory dcf = JaxWsDynamicClientFactory.newInstance();
+            org.apache.cxf.endpoint.Client client = dcf.createClient(entity.getUrl());
+            Object[] objects = client.invoke(entity.getMethod(), entity.getParams(), entity.getOthers());
+            return objects[0].toString();
+        } catch (URISyntaxException u) {
+            u.printStackTrace();
+        } catch (MalformedURLException m) {
+            m.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     protected void parse(OMElement result, String nodeName) {
