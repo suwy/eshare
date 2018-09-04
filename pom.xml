@@ -12,6 +12,7 @@
         <module>eureka</module>
         <module>wechat</module>
         <module>spider</module>
+        <module>frame</module>
     </modules>
 
     <properties>
