@@ -17,4 +17,8 @@ public class WSHandler extends AbstractHandler {
         parse(element, parentNode);
         return super.getList();
     }
+
+//    public OMElement send() {
+//        super;
+//    }
 }

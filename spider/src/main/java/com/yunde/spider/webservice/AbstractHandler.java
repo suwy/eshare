@@ -27,7 +27,7 @@ public abstract class AbstractHandler {
         this.entity = entity;
     }
 
-    protected OMElement send() {
+    public OMElement send() {
         try {
             Options options = new Options();
             EndpointReference targetEPR = new EndpointReference(entity.getUrl());
@@ -46,7 +46,7 @@ public abstract class AbstractHandler {
         }
     }
 
-    protected OMElement sendByAxis2() {
+    public OMElement sendByAxis2() {
         try {
             Options options = new Options();
             EndpointReference targetEPR = new EndpointReference(entity.getUrl());
@@ -65,7 +65,7 @@ public abstract class AbstractHandler {
         }
     }
 
-    protected String sendByCxf() {
+    public String sendByCxf() {
         try {
             System.out.println(entity.toString());
             JaxWsDynamicClientFactory dcf = JaxWsDynamicClientFactory.newInstance();
