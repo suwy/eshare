@@ -1,4 +1,4 @@
-package com.yunde.wechat;
+package com.yunde.website;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Created by laisy on 2018/8/7.
  */
+//@EnableDiscoveryClient
 @SpringBootApplication
 public class RunApplication {
 

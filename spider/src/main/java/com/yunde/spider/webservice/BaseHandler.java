@@ -18,12 +18,12 @@ import java.util.*;
 /**
  * Created by laisy on 2018/8/14.
  */
-public abstract class AbstractHandler {
+public abstract class BaseHandler {
 
-    private final WSEntity entity;
+    private final WebServiceEntity entity;
     private List list = new ArrayList();
 
-    public AbstractHandler(WSEntity entity) {
+    public BaseHandler(WebServiceEntity entity) {
         this.entity = entity;
     }
 

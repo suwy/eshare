@@ -7,9 +7,9 @@ import java.util.List;
 /**
  * Created by laisy on 2018/8/13.
  */
-public class WSHandler extends AbstractHandler {
+public class WebServiceHandler extends BaseHandler {
 
-    public WSHandler(WSEntity entity) {
+    public WebServiceHandler(WebServiceEntity entity) {
         super(entity);
     }
 
@@ -17,8 +17,4 @@ public class WSHandler extends AbstractHandler {
         parse(element, parentNode);
         return super.getList();
     }
-
-//    public OMElement send() {
-//        super;
-//    }
 }

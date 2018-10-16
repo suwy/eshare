@@ -1,4 +1,4 @@
-package com.yunde.wechat.controller;//package org.fsdcic.dmforcccd.dcc.control.wsdl;
+package com.yunde.website.controller;//package org.fsdcic.dmforcccd.dcc.control.wsdl;
 //
 //import org.apache.axiom.om.OMAbstractFactory;
 //import org.apache.axiom.om.OMElement;

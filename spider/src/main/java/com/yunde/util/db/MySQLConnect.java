@@ -28,48 +28,42 @@ public class MySQLConnect {
             if(!con.isClosed())
                 System.out.println("Succeeded connecting to the Database!");
             return con;
-        } catch(ClassNotFoundException e) {
+        } catch(Exception e) {
             try {
-                con.close();
+                if(null == con) con.close();
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
             //数据库驱动类异常处理
             System.out.println("Sorry,can`t find the Driver!");
             e.printStackTrace();
-        } catch(SQLException e) {
+        } finally {
             try {
-                con.close();
+                if(null == con) con.close();
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
-            //数据库连接失败异常处理
-            e.printStackTrace();
-        }catch (Exception e) {
-            try {
-                con.close();
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            }
-            // TODO: handle exception
-            e.printStackTrace();
-        }finally{
-//            System.out.println("数据库数据成功获取！！");
         }
-        System.out.println("still working here ? ");
         return con;
     }
 
     public static void insertDatas(String sql) {
         Connection connection = getConnect();
+        Statement statement = null;
         try {
-            Statement statement = (Statement) connection.createStatement();
+            statement = connection.createStatement();
             boolean result = statement.execute(sql);
             System.out.println(String.format("执行语句 %s结果为%s", sql, result));
 //            new WriteTxt().write2File("D:\\sgtj\\logs\\log.txt", String.format("执行语句 %s结果为%s", sql, result));
-            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                statement.close();
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

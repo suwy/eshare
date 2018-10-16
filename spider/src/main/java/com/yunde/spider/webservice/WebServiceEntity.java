@@ -4,7 +4,7 @@ package com.yunde.spider.webservice;
  * Created by laisy on 2018/8/13.
  * WebService 请求参数模型
  */
-public class WSEntity {
+public class WebServiceEntity {
 
     private String url;
     private String action;
@@ -13,7 +13,7 @@ public class WSEntity {
     private String params;
     private String others;
 
-    public WSEntity(String url, String action, String namespace, String method, String params) {
+    public WebServiceEntity(String url, String action, String namespace, String method, String params) {
         this.url = url;
         this.action = action;
         this.namespace = namespace;
@@ -21,7 +21,7 @@ public class WSEntity {
         this.params = params;
     }
 
-    public WSEntity(String url, String method, String params, String others) {
+    public WebServiceEntity(String url, String method, String params, String others) {
         this.url = url;
         this.method = method;
         this.params = params;

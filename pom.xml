@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>eureka</module>
-        <module>wechat</module>
+        <module>website</module>
         <module>spider</module>
         <module>frame</module>
     </modules>
