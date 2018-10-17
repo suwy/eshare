@@ -1,16 +1,24 @@
 package com.yunde.spider.webservice;
 
+import java.io.Serializable;
+
 /**
  * Created by laisy on 2018/8/13.
  * WebService 请求参数模型
  */
-public class WebServiceEntity {
+public class WebServiceEntity implements Serializable {
 
+    //请求地址
     private String url;
+    //动作
     private String action;
+    //命名空间
     private String namespace;
+    //方法名
     private String method;
+    //请求参数
     private String params;
+    //其他参数
     private String others;
 
     public WebServiceEntity(String url, String action, String namespace, String method, String params) {

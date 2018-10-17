@@ -65,11 +65,9 @@ public class YundeLog {
     public static void info(String msg) {
         logger().info(msg,null, null);
     }
-
     public static void info(String var1, Object... var2) {
         info(var1, var2, null);
     }
-
     public static void info(String msg, Throwable e) {
         info(msg, e);
     }

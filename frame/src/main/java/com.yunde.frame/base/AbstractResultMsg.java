@@ -1,6 +1,8 @@
 package com.yunde.frame.base;
 
-public class AbstractResultMsg<T> {
+import java.io.Serializable;
+
+public class AbstractResultMsg<T> implements Serializable {
 
     private String code;
     private String message;
