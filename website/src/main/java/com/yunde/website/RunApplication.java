@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Created by laisy on 2018/8/7.
  */
-//@EnableDiscoveryClient
 @SpringBootApplication
 public class RunApplication {
 

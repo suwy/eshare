@@ -24,7 +24,7 @@ public class WriteFactory {
         }
 
         FileOutputStream outSTr = null;
-        BufferedOutputStream Buff = null;
+        BufferedOutputStream buff = null;
         int count = 1000;//写文件行数
         long begin0 = System.currentTimeMillis();
         try {
@@ -32,21 +32,20 @@ public class WriteFactory {
             if (!file.getParentFile().exists()) {
                 file.getParentFile().mkdirs();
             }
-//            file.createNewFile();
             outSTr = new FileOutputStream(file);
-            Buff = new BufferedOutputStream(outSTr);
+            buff = new BufferedOutputStream(outSTr);
             for (int i = 0; i < count; i++) {
-                Buff.write("测试java 文件操作\r\n".getBytes());
+                buff.write("测试java 文件操作\r\n".getBytes());
             }
-            Buff.flush();
-            Buff.close();
+            buff.flush();
+            buff.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
-                Buff.close();
+                buff.close();
                 outSTr.close();
             } catch (Exception e) {
                 e.printStackTrace();

@@ -10,8 +10,9 @@ public class YundeLog {
     public static StackTraceElement findCaller() {
         // 获取堆栈信息
         StackTraceElement[] callStack = Thread.currentThread().getStackTrace();
-        if(null == callStack) return null;
-
+        if(null == callStack) {
+            return null;
+        }
         // 最原始被调用的堆栈信息
         StackTraceElement caller = null;
         // 日志类名称
@@ -44,7 +45,9 @@ public class YundeLog {
     private static Logger logger() {
         // 最原始被调用的堆栈对象
         StackTraceElement caller = findCaller();
-        if(null == caller) return LoggerFactory.getLogger(YundeLog.class);
+        if(null == caller){
+            return LoggerFactory.getLogger(YundeLog.class);
+        }
         Logger log = LoggerFactory.getLogger(caller.getClassName() + "." + caller.getMethodName() + "() Line: " + caller.getLineNumber());
         return log;
     }

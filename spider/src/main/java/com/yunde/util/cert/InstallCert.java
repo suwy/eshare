@@ -33,9 +33,9 @@ public class InstallCert {
 
         File file = new File("jssecacerts");
         if (file.isFile() == false) {
-            char SEP = File.separatorChar;
-            File dir = new File(System.getProperty("java.home") + SEP
-                    + "lib" + SEP + "security");
+            char sep = File.separatorChar;
+            File dir = new File(System.getProperty("java.home") + sep
+                    + "lib" + sep + "security");
             file = new File(dir, "jssecacerts");
             if (file.isFile() == false) {
                 file = new File(dir, "cacerts");
@@ -143,16 +143,19 @@ public class InstallCert {
             this.tm = tm;
         }
 
+        @Override
         public X509Certificate[] getAcceptedIssuers() {
             return new X509Certificate[0];
 //            throw new UnsupportedOperationException();
         }
 
+        @Override
         public void checkClientTrusted(X509Certificate[] chain, String authType)
                 throws CertificateException {
             throw new UnsupportedOperationException();
         }
 
+        @Override
         public void checkServerTrusted(X509Certificate[] chain, String authType)
                 throws CertificateException {
             this.chain = chain;

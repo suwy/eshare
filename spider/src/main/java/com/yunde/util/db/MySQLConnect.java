@@ -25,12 +25,14 @@ public class MySQLConnect {
             //加载驱动程序
             Class.forName(driver);
             con = DriverManager.getConnection(url,user,password);
-            if(!con.isClosed())
-                System.out.println("Succeeded connecting to the Database!");
-            return con;
+            if(!con.isClosed()) {
+                return con;
+            }
         } catch(Exception e) {
             try {
-                if(null == con) con.close();
+                if(null == con) {
+                    con.close();
+                }
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }
@@ -39,7 +41,9 @@ public class MySQLConnect {
             e.printStackTrace();
         } finally {
             try {
-                if(null == con) con.close();
+                if(null == con) {
+                    con.close();
+                }
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }

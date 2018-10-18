@@ -41,7 +41,7 @@ public class ReadFactory {
                 String tableName = item[0];
                 String colum = item[2];
                 String comment = item[3];
-                if (!tableName.equals("")) {
+                if (!"".equals( tableName )) {
                     if (createSql.length() != 0) {
                         createSql.deleteCharAt(createSql.length()-2).append(")COMMENT='").append(tableNameCn).append("';\n");
                     }
@@ -50,7 +50,7 @@ public class ReadFactory {
                 }
                 createSql.append(colum).append(" varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '")
                         .append(comment.replaceAll(" ","").replaceAll("　","")).append("',\n");
-                tableNameCn = (item[1].equals("") ? tableNameCn: item[1]);
+                tableNameCn = ("".equals( item[1] ) ? tableNameCn: item[1]);
             }
             createSql.deleteCharAt(createSql.length()-2).append(")COMMENT='").append(tableNameCn).append("';\n");
             System.out.println(createSql);

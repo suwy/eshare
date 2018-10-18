@@ -8,17 +8,29 @@ import java.io.Serializable;
  */
 public class WebServiceEntity implements Serializable {
 
-    //请求地址
+    /**
+     * 请求地址
+     */
     private String url;
-    //动作
+    /**
+     * 动作
+     */
     private String action;
-    //命名空间
+    /**
+     * 命名空间
+     */
     private String namespace;
-    //方法名
+    /**
+     * 方法名
+     */
     private String method;
-    //请求参数
+    /**
+     * 请求参数
+     */
     private String params;
-    //其他参数
+    /**
+     * 其他参数
+     */
     private String others;
 
     public WebServiceEntity(String url, String action, String namespace, String method, String params) {
@@ -60,6 +72,7 @@ public class WebServiceEntity implements Serializable {
         return others;
     }
 
+    @Override
     public String toString() {
         return String.format(" url:%s\n action:%s\n namespace:%s\n method:%s\n params:%s\n others:%s",
                 this.url, this.action, this.namespace, this.method, this.params, this.others);
