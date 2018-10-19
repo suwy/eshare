@@ -9,11 +9,6 @@ public enum RequestTypeEnum implements IEnum {
     CXF,
     AXIS2;
 
-//    RequestTypeEnum(int code, String name) {
-//        this.code = code;
-//        this.name = name;
-//    }
-
     @Override
     public int getCode() {
         return 0;

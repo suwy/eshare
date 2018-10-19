@@ -1,5 +1,7 @@
 package com.yunde.spider.webservice;
 
+import com.yunde.spider.RequestTypeEnum;
+
 import java.io.Serializable;
 
 /**
@@ -33,19 +35,26 @@ public class WebServiceEntity implements Serializable {
      */
     private String others;
 
-    public WebServiceEntity(String url, String action, String namespace, String method, String params) {
+    /**
+     * 请求类型
+     */
+    private RequestTypeEnum requestTypeEnum;
+
+    public WebServiceEntity(String url, String action, String namespace, String method, String params, RequestTypeEnum requestTypeEnum) {
         this.url = url;
         this.action = action;
         this.namespace = namespace;
         this.method = method;
         this.params = params;
+        this.requestTypeEnum = requestTypeEnum;
     }
 
-    public WebServiceEntity(String url, String method, String params, String others) {
+    public WebServiceEntity(String url, String method, String params, String others, RequestTypeEnum requestTypeEnum) {
         this.url = url;
         this.method = method;
         this.params = params;
         this.others = others;
+        this.requestTypeEnum = requestTypeEnum;
     }
 
     public String getUrl() {
@@ -72,9 +81,13 @@ public class WebServiceEntity implements Serializable {
         return others;
     }
 
+    public RequestTypeEnum getRequestTypeEnum() {
+        return requestTypeEnum;
+    }
+
     @Override
     public String toString() {
-        return String.format(" url:%s\n action:%s\n namespace:%s\n method:%s\n params:%s\n others:%s",
-                this.url, this.action, this.namespace, this.method, this.params, this.others);
+        return String.format(" url:%s\n action:%s\n namespace:%s\n method:%s\n params:%s\n others:%s\n requestTypeEnum:%s",
+                this.url, this.action, this.namespace, this.method, this.params, this.others, this.requestTypeEnum);
     }
 }

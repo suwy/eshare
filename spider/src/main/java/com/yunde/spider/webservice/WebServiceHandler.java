@@ -12,6 +12,8 @@ import org.apache.axis2.client.ServiceClient;
 import org.apache.cxf.jaxws.endpoint.dynamic.JaxWsDynamicClientFactory;
 
 import javax.xml.namespace.QName;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -34,8 +36,28 @@ public class WebServiceHandler implements IWebServiceHandler {
 
     @Override
     public Object send(WebServiceEntity entity) {
-        return sendByCxf(entity);
+        Class<?>  cls = this.getClass();
+        Method m ;
+        String response;
+        String function = "sendBy" +entity.getRequestTypeEnum().getName();
+        System.out.println(function);
+        try {
+            m = cls.getDeclaredMethod(function, WebServiceEntity.class);
+            response = (String) m.invoke(cls.newInstance(), entity);
+            System.out.println("=============================="+response);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
+
+
 
     //通过Axis2请求
     public OMElement sendByAxis2(WebServiceEntity entity) {
@@ -58,7 +80,7 @@ public class WebServiceHandler implements IWebServiceHandler {
     }
 
     //通过Cxf请求
-    public String sendByCxf(WebServiceEntity entity) {
+    public String sendByCXF(WebServiceEntity entity) {
         YundeLog.info("请求参数" +entity.toString());
         try {
             JaxWsDynamicClientFactory dcf = JaxWsDynamicClientFactory.newInstance();
@@ -66,9 +88,8 @@ public class WebServiceHandler implements IWebServiceHandler {
             Object[] objects = client.invoke(entity.getMethod(), entity.getParams(), entity.getOthers());
             return objects[0].toString();
         } catch (Exception e) {
-            YundeLog.error(e.getMessage());
-        } finally {
-            return "接口错误";
+            YundeLog.error("接口错误:"+e.getMessage());
+            return "接口错误:"+e.getMessage();
         }
     }
 
