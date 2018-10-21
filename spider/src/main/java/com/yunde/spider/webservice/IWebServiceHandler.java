@@ -1,5 +1,6 @@
 package com.yunde.spider.webservice;
 
+import com.yunde.frame.tools.ResultMsg;
 import com.yunde.spider.IBaseHandler;
 
 /**
@@ -7,5 +8,6 @@ import com.yunde.spider.IBaseHandler;
  */
 public interface IWebServiceHandler extends IBaseHandler<WebServiceEntity> {
 
-    Object send(WebServiceEntity entity);
+    @Override
+    ResultMsg send(WebServiceEntity entity);
 }

@@ -1,6 +1,6 @@
 package com.yunde.spider;
 
-import com.yunde.frame.base.IEnum;
+import com.yunde.frame.tools.IEnum;
 
 /**
  * Created by laisy on 2018/10/18.

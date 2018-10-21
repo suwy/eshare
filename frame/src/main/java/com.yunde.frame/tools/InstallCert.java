@@ -1,4 +1,4 @@
-package com.yunde.util.cert;
+package com.yunde.frame.tools;
 
 import javax.net.ssl.*;
 import java.io.*;

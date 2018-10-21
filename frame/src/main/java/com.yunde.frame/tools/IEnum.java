@@ -1,4 +1,4 @@
-package com.yunde.frame.base;
+package com.yunde.frame.tools;
 
 /**
  * Created by laisy on 2018/10/18.
