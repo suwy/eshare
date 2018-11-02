@@ -101,4 +101,28 @@ public class FileKit {
         }
         long end0 = System.currentTimeMillis();
     }
+
+    public static void writeContent(String fullPath, String content) {
+        BufferedOutputStream bos = null;
+        try {
+            File file = new File(fullPath);
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            FileOutputStream fos = new FileOutputStream(file,true);
+            bos = new BufferedOutputStream(fos);
+            long begin = System.currentTimeMillis();
+            bos.write(content.getBytes());
+            System.out.println("BufferedOutputStream执行耗时: " + (System.currentTimeMillis() - begin));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bos.flush();
+                bos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
