@@ -1,6 +1,7 @@
 package com.yunde.website.controller;
 
 import com.yunde.frame.log.YundeLog;
+import com.yunde.frame.tools.ResultMsg;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/")
-public class IndexController {
+public class IndexController extends BaseController {
 
 //    private static final Logger LOG = LoggerFactory.getLogger(getClass());
 
@@ -22,4 +23,8 @@ public class IndexController {
         YundeLog.info("Someone visit，the page");
         return "hello world, welcome! 欢迎光临！";
     }
+
+//    public ResultMsg login(String account, String password) {
+//        return formateData();
+//    }
 }
