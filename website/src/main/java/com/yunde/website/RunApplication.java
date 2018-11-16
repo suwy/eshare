@@ -4,7 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Created by laisy on 2018/8/7.
+ *
+ * @author laisy
+ * @date 2018/8/7
  */
 @SpringBootApplication
 public class RunApplication {
