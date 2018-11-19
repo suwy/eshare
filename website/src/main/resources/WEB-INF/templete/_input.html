@@ -1,0 +1,29 @@
+#define input_proprietor_selectpage()
+<input id="proprietor" type="text" class="form-control input-selectpage" placeholder="请选择运营商" data-name="proprietorId"
+       data-url="module/prop/selectPage"
+       data-showFields="id,realName,phone">
+#end
+
+#define input_producer_selectpage()
+<input id="producer" type="text" class="form-control input-selectpage" placeholder="请选择生产商" data-name="producerId"
+       data-url="module/producer/selectPage"
+       data-showFields="id,realName,phone">
+#end
+
+#define input_device_selectpage()
+<input id="device" type="text" class="form-control input-selectpage" placeholder="请选择设备" data-name="deviceId"
+       data-url="module/device/selectPage"
+       data-showFields="id,deviceMac" data-parentKeys="proprietor,prop_address,producer">
+#end
+
+#define input_prop_address_selectpage()
+<input id="prop_address" type="text" class="form-control input-selectpage" placeholder="请选择门店" data-name="addressId"
+       data-url="module/prop/address/selectPage"
+       data-showFields="id,address" data-parentKeys="proprietor">
+#end
+
+#define input_prop_group_selectpage()
+<input id="prop_group" type="text" class="form-control input-selectpage" placeholder="请选择分公司" data-name="groupId"
+       data-url="module/prop/group/selectPage"
+       data-showFields="id,name" data-parentKeys="proprietor">
+#end

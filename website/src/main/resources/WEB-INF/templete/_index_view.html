@@ -1,0 +1,38 @@
+#define index_view()
+<!DOCTYPE html>
+<html>
+<head>
+	<base href="#(contextPath)/" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+	<meta name="renderer" content="webkit">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link href="assets/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+	<link href="assets/plug-in/font-awesome/css/font-awesome.min.css?v=4.7.0" rel="stylesheet">
+	<link href="assets/css/plugins/iCheck/custom.css" rel="stylesheet">
+	<link href="assets/css/animate.min.css" rel="stylesheet">
+	<link href="assets/css/style.min.css?v=4.1.0" rel="stylesheet">
+	<link href="assets/plug-in/bootstrap-select/css/bootstrap-select.min.css?v=1.12.4" rel="stylesheet">
+	#@index_view_style?()
+	<style rel="stylesheet">
+		.wrapper-content{
+			padding: 10px!important;
+		}
+	</style>
+</head>
+
+<body class="gray-bg">
+#@index_view_content?()
+<script type="text/javascript" src="assets/js/jquery.min.js?v=2.1.4"></script>
+<script type="text/javascript" src="assets/js/bootstrap.min.js?v=3.3.6"></script>
+<script type="text/javascript" src="assets/js/plugins/iCheck/icheck.min.js"></script>
+<script type="text/javascript" src="assets/js/plugins/layui/layer/layer.js"></script>
+<script type="text/javascript" src="assets/js/plugins/layui/laydate/laydate.js"></script>
+<script type="text/javascript" src="assets/js/plugins/layui/laypage/laypage.js"></script>
+<script type="text/javascript" src="assets/plug-in/bootstrap-select/js/bootstrap-select.min.js?v=1.12.4"></script>
+<script type="text/javascript" src="assets/plug-in/bootstrap-select/js/i18n/defaults-zh_CN.js?v=1.12.4"></script>
+<script type="text/javascript" src="assets/js/_tools.js"></script>
+#@index_view_js_content?()
+</body>
+</html>
+#end

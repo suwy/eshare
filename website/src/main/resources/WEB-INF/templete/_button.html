@@ -1,0 +1,67 @@
+#define btn_del(id)
+<button class="btn-del btn btn-white btn-sm" data-id-value="#(id)"  title="删除">删除</button>
+#end
+
+#define btn_view(id,value)
+<button class="btn btn-sm btn-view" data-id-value="#(id)">#(value)</button>
+#end
+
+#define btn_edit(id)
+<button class="btn-edit btn btn-white btn-sm" data-id-value="#(id)" title="编辑">编辑</button>
+#end
+
+#define btn_checkbox(id)
+<input type="checkbox" class="btn-check" data-id-value="#(id)">
+#end
+
+#define btn_showPage(title, url)
+<button class="btn-showPage btn btn-white btn-sm" type="button" data-url="#(url)">#@_getButtonTitle(title)</button>
+#end
+
+#define btn_showDialog(title, url)
+<button class="btn-showDialog btn btn-white btn-sm" type="button" data-url="#(url)">#@_getButtonTitle(title)</button>
+#end
+
+#define btn_image(title, url)
+<button class="btn btn-white btn-img" type="button" data-url="#(url)">#@_getButtonTitle(title)</button>
+#end
+
+#define btn_post(url, title, key, value)
+<button class="btn-post btn btn-white btn-sm" type="button" data-url="#(url)" data-key="#(key)" data-value="#(value)">#@_getButtonTitle(title)</button>
+#end
+
+#define btn_add()
+<button id="btn-add" class="btn btn-success" type="button"><i class="fa fa-plus"></i> 新增</button>
+#end
+
+#define btn_dels()
+<button id="btn-dels" class="btn btn-danger" type="button"><i class="fa fa-trash"></i> 删除</button>
+#end
+
+#define btn_query()
+<button id="btn-query" class="btn btn-primary" type="button"><i class="fa fa-search"></i> 查询</button>
+#end
+
+#define btn_reset()
+<button class="btn btn-default" type="reset"><i class="fa fa-refresh"></i> 重置</button>
+#end
+
+#define btn_submit()
+<button id="btn-submit" class="btn btn-primary" type="button"><i class="fa fa-check"></i> 提交</button>
+#end
+
+#define btn_close()
+<button id="btn-close" class="btn btn-danger" type="button"><i class="fa fa-close"></i> 关闭</button>
+#end
+
+#define btn_windowOpen(title, url)
+<button class="btn-windowOpen btn btn-white btn-sm" type="button" data-url="#(url)">#@_getButtonTitle(title)</button>
+#end
+
+#define _getButtonTitle(title)
+    #if(tag.startWith(title, "fa-"))
+<i class="fa #(title)"></i>
+    #else
+#(title)
+    #end
+#end

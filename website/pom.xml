@@ -70,6 +70,16 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.cloud</groupId>
+            <artifactId>frame</artifactId>
+            <version>1.9.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.29</version>
+        </dependency>
 
         <!--<dependency>-->
             <!--<groupId>net.logstash.logback</groupId>-->

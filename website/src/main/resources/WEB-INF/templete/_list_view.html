@@ -1,0 +1,72 @@
+#define list_view()
+<!DOCTYPE html>
+<html>
+<head>
+	<base href="#(contextPath)/" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+	<meta name="renderer" content="webkit">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css?v=3.3.6">
+	<link rel="stylesheet" href="assets/plug-in/font-awesome/css/font-awesome.min.css?v=4.7.0">
+	<link rel="stylesheet" href="assets/css/plugins/iCheck/custom.css">
+	<link rel="stylesheet" href="assets/css/animate.min.css">
+	<link rel="stylesheet" href="assets/css/style.min.css?v=4.1.0">
+
+	<link rel="stylesheet" href="assets/plug-in/selectpage/selectpage.css">
+	<!-- include for Bootstrap3.x -->
+	<link rel="stylesheet" href="assets/plug-in/selectpage/selectpage.bootstrap3.css">
+	<!-- include for no css framework -->
+	<link rel="stylesheet" href="assets/plug-in/selectpage/selectpage.base.css">
+
+	<link rel="stylesheet" href="assets/css/_search.css">
+	<link rel="stylesheet" type="text/css" href="assets/mobile/css/list.css" media="screen and (max-width: 960px)">
+	<link rel="stylesheet" type="text/css" href="assets/css/list.css" media="screen and (min-width: 960px)">
+	#@list_view_style?()
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInDown mainContent">
+	<div class="row row-lg">
+		<div class="col-sm-12">
+			<div class="ibox float-e-margins iBox">
+				<div class="ibox-content iBoxContent">
+					#@list_view_content?()
+					<div class="row" style="margin-top: 8px;">
+						<div id="_pagination_str" class="pull-left"></div>
+						<div id="_pagination" class="pull-right"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+#include("_modal.html")
+<script type="text/javascript" src="assets/js/jquery.min.js?v=2.1.4"></script>
+<script type="text/javascript" src="assets/js/bootstrap.min.js?v=3.3.6"></script>
+<script type="text/javascript" src="assets/js/plugins/iCheck/icheck.min.js"></script>
+<script type="text/javascript" src="assets/js/plugins/layui/layer/layer.js"></script>
+<script type="text/javascript" src="assets/js/plugins/layui/laydate/laydate.js"></script>
+<script type="text/javascript" src="assets/js/plugins/layui/laypage/laypage.js"></script>
+<script type="text/javascript" src="assets/plug-in/selectpage/selectpage.js"></script>
+<script type="text/javascript" src="assets/js/_tools.js"></script>
+<script type="text/javascript" src="assets/js/_search.js"></script>
+<script type="text/javascript" src="assets/js/_list.js"></script>
+<script type="text/javascript" src="assets/js/_input-selectpage.js"></script>
+<script type="text/javascript">
+    $(function () {
+        setTableHeight();
+        window.onresize = function () {
+            setTableHeight();
+        };
+        function setTableHeight() {
+            var bodyH = document.body.clientHeight;
+            var tableH = bodyH - $('.queryParam').height() -100;
+            $('.tableWrapper').css('max-height',tableH);
+        }
+    });
+</script>
+#@list_view_js_content?()
+</body>
+</html>
+#end

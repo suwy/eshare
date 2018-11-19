@@ -1,0 +1,118 @@
+Table: operators
+------------+--------------+------+-----+---------+---------
+ Field      | Type         | Null | Key | Default | Remarks 
+------------+--------------+------+-----+---------+---------
+ id         | INT(10)      | NO   | PRI |         |         
+ openId     | CHAR(32)     | NO   |     |         |         
+ realName   | CHAR(16)     | NO   |     |         |         
+ phone      | CHAR(11)     | NO   |     |         |         
+ remark     | CHAR(32)     | YES  |     |         |         
+ createTime | DATETIME(19) | NO   |     |         |         
+ createUser | CHAR(32)     | NO   |     |         |         
+------------+--------------+------+-----+---------+---------
+
+Table: sys_menu
+------------+---------------+------+-----+---------+---------
+ Field      | Type          | Null | Key | Default | Remarks 
+------------+---------------+------+-----+---------+---------
+ id         | VARCHAR(32)   | NO   | PRI |         |         
+ type       | ENUM(6)       | YES  |     | menu    |         
+ name       | VARCHAR(32)   | NO   |     |         |         
+ menuType   | VARCHAR(32)   | YES  |     |         | 菜单类型    
+ icon       | VARCHAR(64)   | YES  |     |         |         
+ link       | VARCHAR(1024) | YES  |     |         |         
+ state      | ENUM(2)       | YES  |     | y       |         
+ orderNo    | INT(10)       | NO   |     | 0       |         
+ parentId   | VARCHAR(32)   | YES  |     |         |         
+ createUser | VARCHAR(255)  | YES  |     |         |         
+ createTime | DATETIME(19)  | YES  |     |         |         
+------------+---------------+------+-----+---------+---------
+
+Table: sys_resources
+------------+--------------+------+-----+---------+---------
+ Field      | Type         | Null | Key | Default | Remarks 
+------------+--------------+------+-----+---------+---------
+ id         | VARCHAR(32)  | NO   | PRI |         |         
+ resFor     | ENUM(6)      | NO   |     | web     | 资源for,web,mobile
+ resType    | ENUM(6)      | NO   |     | page    | 资源类型，page页面、button按钮
+ resName    | VARCHAR(32)  | NO   |     |         | 资源名称    
+ resValue   | VARCHAR(255) | YES  |     |         | 资源值     
+ state      | ENUM(2)      | NO   |     | y       | 状态      
+ orderNo    | INT(10)      | NO   |     | 0       |         
+ parentId   | VARCHAR(32)  | YES  |     |         |         
+ remark     | VARCHAR(64)  | YES  |     |         |         
+ createUser | VARCHAR(64)  | YES  |     |         |         
+ createTime | DATETIME(19) | NO   |     |         |         
+------------+--------------+------+-----+---------+---------
+
+Table: sys_role
+----------+--------------+------+-----+---------+---------
+ Field    | Type         | Null | Key | Default | Remarks 
+----------+--------------+------+-----+---------+---------
+ id       | VARCHAR(64)  | NO   | PRI |         |         
+ name     | VARCHAR(16)  | NO   |     |         | 角色名称    
+ parentId | VARCHAR(64)  | NO   |     |         | 父级角色Id  
+ remark   | VARCHAR(255) | YES  |     |         | 备注      
+ state    | ENUM(2)      | NO   |     | y       | 状态      
+----------+--------------+------+-----+---------+---------
+
+Table: sys_role_menu
+--------+-------------+------+-----+---------+---------
+ Field  | Type        | Null | Key | Default | Remarks 
+--------+-------------+------+-----+---------+---------
+ id     | VARCHAR(64) | NO   | PRI |         |         
+ roleId | VARCHAR(64) | NO   |     |         |         
+ menuId | VARCHAR(64) | NO   |     |         |         
+--------+-------------+------+-----+---------+---------
+
+Table: sys_role_resource
+------------+-------------+------+-----+---------+---------
+ Field      | Type        | Null | Key | Default | Remarks 
+------------+-------------+------+-----+---------+---------
+ id         | VARCHAR(64) | NO   | PRI |         |         
+ roleId     | VARCHAR(64) | NO   |     |         |         
+ resourceId | VARCHAR(64) | NO   |     |         |         
+------------+-------------+------+-----+---------+---------
+
+Table: sys_user
+----------+-------------+------+-----+---------+---------
+ Field    | Type        | Null | Key | Default | Remarks 
+----------+-------------+------+-----+---------+---------
+ id       | VARCHAR(32) | NO   | PRI |         |         
+ name     | VARCHAR(32) | YES  |     |         | 名称      
+ image    | VARCHAR(64) | YES  |     |         |         
+ account  | VARCHAR(32) | YES  |     |         | 账号      
+ state    | ENUM(2)     | YES  |     | y       |         
+ password | VARCHAR(64) | YES  |     |         | 密码      
+ phone    | VARCHAR(11) | YES  |     |         |         
+ email    | VARCHAR(64) | YES  |     |         |         
+ nickName | VARCHAR(64) | YES  |     |         |         
+----------+-------------+------+-----+---------+---------
+
+Table: sys_user_menu
+--------+-------------+------+-----+---------+---------
+ Field  | Type        | Null | Key | Default | Remarks 
+--------+-------------+------+-----+---------+---------
+ id     | VARCHAR(64) | NO   | PRI |         |         
+ userId | VARCHAR(64) | NO   |     |         |         
+ menuId | VARCHAR(64) | NO   |     |         |         
+--------+-------------+------+-----+---------+---------
+
+Table: sys_user_resource
+------------+-------------+------+-----+---------+---------
+ Field      | Type        | Null | Key | Default | Remarks 
+------------+-------------+------+-----+---------+---------
+ id         | VARCHAR(64) | NO   | PRI |         |         
+ userId     | VARCHAR(64) | NO   |     |         |         
+ resourceId | VARCHAR(64) | NO   |     |         |         
+------------+-------------+------+-----+---------+---------
+
+Table: sys_user_role
+--------+-------------+------+-----+---------+---------
+ Field  | Type        | Null | Key | Default | Remarks 
+--------+-------------+------+-----+---------+---------
+ id     | VARCHAR(64) | NO   | PRI |         |         
+ userId | VARCHAR(64) | NO   |     |         |         
+ roleId | VARCHAR(64) | NO   |     |         |         
+--------+-------------+------+-----+---------+---------
+

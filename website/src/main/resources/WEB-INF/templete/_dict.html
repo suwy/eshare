@@ -1,0 +1,59 @@
+#define dict_select_by_list(list, key, name, showAll, checkValue)
+    #if(showAll)
+    <option value="">全部</option>
+    #end
+    #for(x : list)
+    <option value="#(x[key])" #(checkValue==x[key]?"selected":"")>#(x[name])</option>
+    #end
+#end
+
+#define dict_select_by_map(map, showAll, checkValue)
+    #if(showAll)
+    <option value="">全部</option>
+    #end
+    #for(x : map)
+    <option value="#(x.key)" #(checkValue==x.key?"selected":"")>#(x.value)</option>
+    #end
+#end
+
+#define dict_select_all(dictId, dataName, checkValue)
+<select class="form-control" data-name="#(dataName)">
+    #@dict_select_option(dictId, dataName, true, checkValue)
+</select>
+#end
+
+#define dict_select(dictId, dataName)
+<select class="form-control" data-name="#(dataName)">
+    #@dict_select_option(dictId, dataName, false, "")
+</select>
+#end
+
+#define dict_select_option(dictId, dataName, showAll, checkValue)
+    #if(dictTag.isSysDict(dictId))
+    #@dict_select_by_map(dictTag.getSysDict(dictId), showAll, checkValue)
+    #elseif(dictId=="menu_type")
+    #@dict_select_by_map(dictTag.MENU_TYPE, showAll, checkValue)
+    #elseif(dictId=="view_type")
+    #@dict_select_by_list(dictTag.querySelect((com.allpaycloud.module.api.DictModule::me).viewType, {}), "id", "name", showAll, checkValue)
+    #elseif(dictId=="prop_role")
+    #@dict_select_by_list(dictTag.querySelect((com.allpaycloud.module.api.PropHierarchyModule::me).propRole, {}), "id", "name", showAll, checkValue)
+    #else
+    #@dict_select_by_list(dictTag.select(dictId), "code", "name", showAll, checkValue)
+    #end
+#end
+
+#define dict_info(dictId, detailId)
+    #if(dictTag.isSysDict(dictId))
+        #(dictTag.getSysDict(dictId)[detailId]??)
+    #elseif(dictId=="view_type")
+        #(dictTag.queryInfo((com.allpaycloud.module.api.DictModule::me).viewType, detailId).name??)
+    #elseif(dictId=="prop_role")
+        #(dictTag.queryInfo((com.allpaycloud.module.api.PropHierarchyModule::me).propRole, detailId).name??)
+    #else
+        #(dictTag.info(dictId,detailId).name??)
+    #end
+#end
+
+#define dict_label_info(dictId,detailId)
+<span class="label label-#(dictTag.getLabelId(dictId,detailId))">#@dict_info(dictId,detailId)</span>
+#end

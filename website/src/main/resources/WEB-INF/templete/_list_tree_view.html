@@ -1,0 +1,44 @@
+#define list_tree_view()
+<!DOCTYPE html>
+<html>
+<head>
+	<base href="#(contextPath)/" />
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.ico"> 
+    <link href="assets/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="assets/plug-in/font-awesome/css/font-awesome.min.css?v=4.7.0" rel="stylesheet">
+    <link href="assets/css/plugins/jsTree/style.min.css" rel="stylesheet">
+    <link href="assets/css/animate.min.css" rel="stylesheet">
+    <link href="assets/css/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="assets/plug-in/zTree_v3/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+    <style type="text/css">
+    	 body{height:100%;}
+    	.ztree li span.button.add {margin-left:2px; margin-right: -1px; background-position:-144px 0; vertical-align:top; *vertical-align:middle}
+    	.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio]{margin-top:0px;}
+    	.fa-hover{font-size: 30px;border: 1px #fff solid;text-align: center;cursor: pointer;}
+    	.fa-hover:hover{color: #0099CC;border: 1px #ccc solid; }
+    	form .errtips{color: #ec4758;}
+    </style>
+</head>
+<body class="gray-bg">
+    <div class="row wrapper wrapper-content animated fadeInRight" style="height: 99%;">
+        <div class="col-sm-12" style="height: 100%;">
+            <div class="ibox float-e-margins" style="height: 100%;">
+                <div class="ibox-content" style="height: 100%;">
+                   	#@list_tree_view_content?()
+                   	<div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="assets/js/jquery.min.js?v=2.1.4"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js?v=3.3.6"></script>
+    <script type="text/javascript" src="assets/plug-in/zTree_v3/js/jquery.ztree.all.min.js"></script>
+    <script type="text/javascript" src="assets/js/plugins/layui/layer/layer.js"></script>
+    <script type="text/javascript" src="assets/js/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" src="assets/js/_tools.js"></script>
+    <script type="text/javascript" src="assets/js/_list_tree.js"></script>
+</body>
+</html>
+#end

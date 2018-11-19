@@ -1,0 +1,107 @@
+#define form_view()
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="#(contextPath)/"/>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css?v=3.3.6">
+    <link rel="stylesheet" href="assets/plug-in/font-awesome/css/font-awesome.min.css?v=4.7.0">
+    <link rel="stylesheet" href="assets/css/plugins/iCheck/custom.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/style.min.css?v=4.1.0">
+    <link rel="stylesheet" href="assets/css/common.css?v=0.0.1">
+    <link rel="stylesheet" href="assets/css/_search.css">
+
+    <link rel="stylesheet" href="assets/plug-in/selectpage/selectpage.css">
+    <!-- include for Bootstrap3.x -->
+    <link rel="stylesheet" href="assets/plug-in/selectpage/selectpage.bootstrap3.css">
+    <!-- include for no css framework -->
+    <link rel="stylesheet" href="assets/plug-in/selectpage/selectpage.base.css">
+
+    <style type="text/css">
+        #_form.view .alert {
+            margin-bottom: 10px;
+        }
+
+        #_form.view .alert hr {
+            margin: 2px auto;
+        }
+
+        #_form.view .alert .form-group {
+            margin-bottom: 2px;
+        }
+
+        #_form.form .alert .form-group {
+            margin-bottom: 5px;
+        }
+
+        #_form .errtips {
+            color: #ec4758;
+        }
+    </style>
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row row-lg">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    #@form_view_content?()
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+#include("_modal.html")
+<script id="tpl_suggest" type="text/html">
+    #[[
+    <table class="table table-hover table-condensed"
+           style="display:block;overflow: hidden;overflow-y:auto;max-height: 300px;">
+        <thead>
+        <tr>
+            {{# var i=0 }}
+            {{# for(var name in d._headers){ }}
+            {{# if(i==0){ }}
+            <th>{{ d._headers[name] }}({{ d.result.length }})</th>
+            {{# } }}
+            {{# if(i>0){ }}
+            <th>{{ d._headers[name] }}</th>
+            {{# } }}
+            {{# i++ }}
+            {{# } }}
+            <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{# for(var i = 0, len = d.result.length; i < len; i++){ }}
+        <tr class="suggest-tr">
+            {{# for(var name in d._headers){ }}
+            <td data-name="{{ name }}" data-value="{{ d.result[i][name] }}">{{ d.result[i][name] }}</td>
+            {{# } }}
+            <td>&nbsp;</td>
+        </tr>
+        {{# } }}
+        </tbody>
+    </table>
+    ]]#
+</script>
+<script type="text/javascript" src="assets/js/jquery.min.js?v=2.1.4"></script>
+<script type="text/javascript" src="assets/js/bootstrap.min.js?v=3.3.6"></script>
+<script type="text/javascript" src="assets/js/plugins/iCheck/icheck.min.js"></script>
+<script type="text/javascript" src="assets/js/plugins/layui/layer/layer.js"></script>
+<script type="text/javascript" src="assets/js/plugins/layui/laydate/laydate.js"></script>
+<script type="text/javascript" src="assets/js/plugins/layui/laytpl/laytpl.js"></script>
+<script type="text/javascript" src="assets/js/plugins/template/template.js"></script>
+<script type="text/javascript" src="assets/js/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" src="assets/plug-in/selectpage/selectpage.js"></script>
+<script type="text/javascript" src="assets/js/_search.js"></script>
+<script type="text/javascript" src="assets/js/_tools.js"></script>
+<script type="text/javascript" src="assets/js/_form.js"></script>
+<script type="text/javascript" src="assets/js/_input-selectpage.js"></script>
+#@form_view_js_content?()
+</body>
+</html>
+#end

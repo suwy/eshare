@@ -1,0 +1,17 @@
+#define page_view()
+<input id="_pageNumber" type="hidden" value="#(_page.pageNumber)">
+<input id="_pageSize" type="hidden" value="#(_page.pageSize)">
+<input id="_totalPage" type="hidden" value="#(_page.totalPage)">
+<input id="_totalRow" type="hidden" value="#(_page.totalRow)">
+#@page_view_content?()
+#end
+
+#define data_not_exist_page_view(a)
+<tr>
+	<td colspan="#(a)" align="center">没有找到匹配的记录</td>
+</tr>
+#end
+
+#define func_serial_number(page, index)
+#((page.pageNumber-1)*page.pageSize+index+1)
+#end

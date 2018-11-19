@@ -1,0 +1,80 @@
+#@form_view()
+#define form_view_content()
+<style>
+    .title {
+        font-weight: 600;
+        padding: 15px;
+        border-bottom: 1px #ddd solid;
+    }
+    .returnBody {
+        height: 200px;
+        overflow: scroll;
+    }
+    .returnBody p {
+        margin: 0;
+    }
+</style>
+<div class="row">
+    <h1 class="title col-sm-12 text-center">#(title)</h1>
+    <form id="_form" class="form-horizontal m-t" data-url="#(_dataUrl)" data-init-url="#(_dataUrl)/getById/#id" data-id-value="#(_id)">
+        #@form_view_diy_content?()
+        <div class="form-group col-sm-12 ">
+            <label class="col-sm-2 control-label text-right">请求参数：</label>
+            <div class="col-sm-8">
+                <textarea class="form-control param" rows="5" placeholder='请输入#(idKey)，用 “,” 分割多条数据'></textarea>
+            </div>
+        </div>
+        <div class="form-group col-sm-10 text-right">
+            <button id="btn-submit" class="btn btn-primary" type="button"><i class="fa fa-check"></i> 提交</button>
+            <button class="btn btn-default refresh" type="reset"><i class="fa fa-refresh"></i> 重置</button>
+        </div>
+        <div class="form-group col-sm-12 ">
+            <label class="col-sm-2 control-label text-right">返回数据：</label>
+            <div class="col-sm-8">
+                <div class="form-control returnBody"></div>
+            </div>
+        </div>
+    </form>
+</div>
+#end
+
+<script type="text/javascript">
+    $(function () {
+        var $param = $(".param"),
+            $returnBody = $(".returnBody"),
+            $sub = $("#btn-submit"),
+            $refresh = $(".refresh");
+        var paramArr, formJson = {};
+
+        $sub.on('diySubmit',function (e, supObj) {
+            var param = $param.val();
+            if(param == ''){
+                $.tools.errorMsg('请输入请求数据');
+                return false;
+            }
+
+            paramArr = param.split(',');
+            formJson = $("#_form").toolForm("serializeArray");
+            setData(0);
+        });
+
+        $refresh.click(function(){
+            $returnBody.html("");
+        });
+
+        function setData(currIndex) {
+            var value = paramArr[currIndex].trim();
+            var json = $.extend({},{
+                "#(idKey)": value
+            }, formJson);
+            $.post("#(url)",json, function(data){
+                $returnBody.append('<p>'+JSON.stringify(data,null,2)+'</p>');
+                if(currIndex < paramArr.length - 1){
+                    setData(currIndex+1);
+                }
+            }).error(function(e){
+                $.tools.errorMsg("请求后台接口失败,错误码："+e.status);
+            });
+        }
+    });
+</script>
