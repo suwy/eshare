@@ -1,13 +1,13 @@
 package com.yunde.website.allpay.base.plugin.allpay;
 
 import com.alibaba.fastjson.JSONObject;
-import com.allpaycloud.base.cloud.base.BaseAllpayBean;
 import com.jfinal.ext.kit.ModelKit;
 import com.jfinal.ext.kit.RecordKit;
 import com.jfinal.interfaces.ISuccCallback;
 import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Record;
+import com.yunde.website.allpay.base.base.BaseAllpayBean;
 
 import java.util.*;
 

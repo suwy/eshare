@@ -2,9 +2,9 @@ package com.yunde.website.allpay.common.util;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.allpaycloud.base.cloud.plugin.allpay.AllpayModuleTable;
-import com.allpaycloud.module.api.DictModule;
 import com.jfinal.kit.StrKit;
+import com.yunde.website.allpay.api.DictModule;
+import com.yunde.website.allpay.base.plugin.allpay.AllpayModuleTable;
 
 import java.util.LinkedHashMap;
 

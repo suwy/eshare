@@ -1,6 +1,6 @@
 package com.yunde.website.allpay.base.plugin.allpay;
 
-import com.allpaycloud.base.cloud.base.BaseAllpayBean;
+import com.yunde.website.allpay.base.base.BaseAllpayBean;
 
 import java.util.Map;
 

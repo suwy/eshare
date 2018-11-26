@@ -1,7 +1,5 @@
 package com.yunde.website.allpay.common.util;
 
-import com.allpay.web.module.device.DeviceService;
-import com.allpaycloud.module.api.bean.ModuleDeviceBean;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
@@ -59,37 +57,37 @@ public class QrCodeHelper {
         }
     }
 
-    public static void createQrcode(ModuleDeviceBean device, Controller controller){
-        String root = controller.getRequest().getSession().getServletContext().getRealPath("/") + File.separator;
-
-        ServletOutputStream out = null;
-        try {
-            String content = PropKit.get("allpay_qrcode_url").replace("#qrcode", device.getDeviceQrCode16());
-            out = controller.getResponse().getOutputStream();
-            controller.getResponse().reset();
-            controller.getResponse().setHeader("content-disposition", String.format("attachment;filename=%s.jpg",
-                    URLEncoder.encode(device.getDeviceMac(), "UTF-8")));
-            String mac = device.getDeviceMac(), code = device.getHomemadeId();
-            String waterText = "设备编号: " + mac.substring(mac.length() - 6, mac.length())+(!StrKit.isBlank(code)?("-"+String.format("%03d", Integer.parseInt(code))):"");
-            QrCodeHelper.createQrcode(content, waterText, root, out, true);
-            out.flush();
-            if (!StrKit.valueEquals("1", device.get("isDownload"))) {
-                device.setIsDownload(1);
-                DeviceService.me.updateDevice(device);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (out != null) {
-                try {
-                    out.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        controller.renderNull();
-    }
+//    public static void createQrcode(ModuleDeviceBean device, Controller controller){
+//        String root = controller.getRequest().getSession().getServletContext().getRealPath("/") + File.separator;
+//
+//        ServletOutputStream out = null;
+//        try {
+//            String content = PropKit.get("allpay_qrcode_url").replace("#qrcode", device.getDeviceQrCode16());
+//            out = controller.getResponse().getOutputStream();
+//            controller.getResponse().reset();
+//            controller.getResponse().setHeader("content-disposition", String.format("attachment;filename=%s.jpg",
+//                    URLEncoder.encode(device.getDeviceMac(), "UTF-8")));
+//            String mac = device.getDeviceMac(), code = device.getHomemadeId();
+//            String waterText = "设备编号: " + mac.substring(mac.length() - 6, mac.length())+(!StrKit.isBlank(code)?("-"+String.format("%03d", Integer.parseInt(code))):"");
+//            QrCodeHelper.createQrcode(content, waterText, root, out, true);
+//            out.flush();
+//            if (!StrKit.valueEquals("1", device.get("isDownload"))) {
+//                device.setIsDownload(1);
+//                DeviceService.me.updateDevice(device);
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } finally {
+//            if (out != null) {
+//                try {
+//                    out.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
+//        controller.renderNull();
+//    }
 
     public static void createScanActQrcode(Integer activityId, Controller controller) throws WriterException {
         String root = controller.getRequest().getSession().getServletContext().getRealPath("/") + File.separator;

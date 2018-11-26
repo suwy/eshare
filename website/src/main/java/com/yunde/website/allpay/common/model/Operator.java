@@ -1,6 +1,6 @@
 package com.yunde.website.allpay.common.model;
 
-import com.allpay.common.model.base.BaseOperator;
+import com.yunde.website.allpay.common.model.base.BaseOperator;
 
 import java.util.HashSet;
 import java.util.Set;

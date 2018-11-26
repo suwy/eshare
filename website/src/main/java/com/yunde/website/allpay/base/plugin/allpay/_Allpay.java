@@ -1,7 +1,5 @@
 package com.yunde.website.allpay.base.plugin.allpay;
 
-import com.alibaba.fastjson.JSONObject;
-import com.allpaycloud.base.cloud.plugin.graylog.GraylogKit;
 import com.jfinal.kit.HttpKit;
 import com.jfinal.kit.JsonKit;
 
@@ -50,16 +48,16 @@ public class _Allpay {
 
         AllpayResult allpayResult = AllpayResult.create(resultStr);
 
-        GraylogKit.info(new JSONObject(){{
-            put("url", url);
-            put("input", data);
-            put("output", resultStr);
-            put("cost", System.currentTimeMillis()-startTime);
-            put("succeed", allpayResult.isSucceed());
-            put("errorMsg", allpayResult.getErrorMsg());
-            put("msgId", allpayResult.get("$msgId"));
-            put("type", "api");
-        }});
+//        GraylogKit.info(new JSONObject(){{
+//            put("url", url);
+//            put("input", data);
+//            put("output", resultStr);
+//            put("cost", System.currentTimeMillis()-startTime);
+//            put("succeed", allpayResult.isSucceed());
+//            put("errorMsg", allpayResult.getErrorMsg());
+//            put("msgId", allpayResult.get("$msgId"));
+//            put("type", "api");
+//        }});
 
         return allpayResult;
     }
