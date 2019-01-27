@@ -13,6 +13,7 @@
         <module>website</module>
         <module>spider</module>
         <module>frame</module>
+        <module>management</module>
     </modules>
 
     <properties>
