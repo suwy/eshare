@@ -9,24 +9,24 @@ import java.io.File;
 import java.util.ArrayList;
 
 /**
- * @author: suwy
+ * @author: laisy
  * @date: 2019/1/26
  * @decription:
  */
 public class ZipKit {
 
-    public static void main(String[] args) {
-        try {
-//            final ArrayList<File> fileAddZip = new ArrayList<File>(); // 向zip包中添加文件集合
-//            fileAddZip.add(new File("/Users/ddbug/IdeaProjects/gitS/eshare/frame/src/main/java/com.yunde.frame/tools/XmlKit.java")); // 向zip包中添加一个word文件
-//            zip(fileAddZip, "./testZip.zip");
-
-            unzip("./testZip.zip","./", "123456");
-        } catch (final ZipException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
+//    public static void main(String[] args) {
+//        try {
+////            final ArrayList<File> fileAddZip = new ArrayList<File>(); // 向zip包中添加文件集合
+////            fileAddZip.add(new File("/Users/ddbug/IdeaProjects/gitS/eshare/frame/src/main/java/com.yunde.frame/tools/XmlKit.java")); // 向zip包中添加一个word文件
+////            zip(fileAddZip, "./testZip.zip");
+//
+//            unzip("./testZip.zip","./", "123456");
+//        } catch (final ZipException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//    }
 
     public static void zip(ArrayList<File> files, String zipPath) throws ZipException {
         ZipFile zipFile = new ZipFile(zipPath);
@@ -37,7 +37,7 @@ public class ZipKit {
         parameters.setEncryptionMethod(Zip4jConstants.ENC_METHOD_AES); // 加密级别
         //设置aes加密强度
         parameters.setAesKeyStrength(Zip4jConstants.AES_STRENGTH_256);
-        parameters.setPassword("123456"); // 压缩包密码为123456
+        parameters.setPassword("20190101");
         zipFile.addFiles(files, parameters);
     }
 
