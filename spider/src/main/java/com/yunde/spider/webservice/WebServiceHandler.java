@@ -17,7 +17,7 @@ public class WebServiceHandler implements IWebServiceHandler {
         ResultMsg response;
         String function = "send";
         try {
-            String className = StringKit.uppercase(entity.getRequestTypeEnum().getName().toLowerCase());
+            String className = StringKit.toClassCase(entity.getRequestTypeEnum().getName().toLowerCase());
             Class<?>  cls = Class.forName("com.yunde.spider.webservice."+className);
             m = cls.getDeclaredMethod(function, WebServiceEntity.class);
             YundeLog.info("请求参数" +entity.toString());

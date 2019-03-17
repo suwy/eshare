@@ -14,6 +14,7 @@
         <module>spider</module>
         <module>frame</module>
         <module>management</module>
+        <module>coder</module>
     </modules>
 
     <properties>
