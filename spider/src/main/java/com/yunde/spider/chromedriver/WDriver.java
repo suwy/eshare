@@ -4,6 +4,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.easy.excel.ExcelContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -42,7 +43,7 @@ public class WDriver {
 
     public void exportExl() {
         try {
-            OutputStream ops = new FileOutputStream("D:/名单.xlsx");
+            OutputStream ops = new FileOutputStream("F:/名单.xlsx");
             ExcelContext context = new ExcelContext("candidate.xml");
             Workbook workbook = context.createExcel("candidate", candidates);
             workbook.write(ops);
@@ -129,7 +130,6 @@ public class WDriver {
         for (int i=0; i<dutySize; i++) {
             WebElement duty = duties.get(i);
             String href = duty.getAttribute("href");
-//            System.out.println("获取href="+href);
             urls.add(href);
         }
         showUrls(urls);
@@ -137,7 +137,7 @@ public class WDriver {
     }
 
     public void showUrls(List<String> urls) {
-        int size = urls.size();
+        int size = 1;
         for (int i=0; i<size; i++) {
             String url = urls.get(i);
             driver.get(url);
@@ -160,7 +160,9 @@ public class WDriver {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            userNameUrls.get(i).click();
+            WebElement element = userNameUrls.get(i);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+            element.click();
             List windows = new ArrayList(driver.getWindowHandles());
             String previous = windows.get(0).toString();
             String after = windows.get(1).toString();
@@ -174,6 +176,11 @@ public class WDriver {
             WebElement mobilePhone = driver.findElement(By.cssSelector(".resume-content__mobile-phone>span"));
             System.out.println("mobilePhone="+mobilePhone.getText());
             candidates.add(new Candidate(candidateName.getText(), mobilePhone.getText(), jobTitle.getText()));
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             driver.close();
             driver.switchTo().window(previous);
         }
