@@ -3,6 +3,6 @@
     <excel id = "candidate" sheetname="名单目录" class = "com.yunde.spider.chromedriver.Candidate" sheetIndex="1">
         <field name = "jobTitle" title="职位" />
         <field name = "name" title="姓名" />
-        <field name = "name" title="手机号码" />
+        <field name = "mobile" title="手机号码" />
     </excel>
 </excels>

@@ -36,9 +36,9 @@ public class WDriver {
     public static void main(String args[]) throws Exception {
         WDriver wDriver = new WDriver();
         wDriver.getDriver();
-//        wDriver.login("","");
-        wDriver.handlePage();
-        wDriver.exportExl();
+        wDriver.login("","");
+//        wDriver.handlePage();
+//        wDriver.exportExl();
     }
 
     public void exportExl() {
@@ -58,7 +58,12 @@ public class WDriver {
 
     /*登录页面*/
     public void login(String loginName, String password) {
-        driver.get("https://passport.zhaopin.com/org/login");
+        driver.get("https://www.zhaopin.com/");
+        getPath();
+        waitTime(driver, ".not-login__position--active");
+        driver.findElement(By.cssSelector(".not-login__position--active")).click();
+
+//        driver.get("https://passport.zhaopin.com/org/login");
         Set<Cookie> cookies = driver.manage().getCookies();
         Iterator<Cookie> itr = cookies.iterator();
         while (itr.hasNext()) {
@@ -73,6 +78,8 @@ public class WDriver {
         }
         String title = driver.getTitle();
         System.out.println(title);
+
+        waitTime(driver, "#loginName");
         WebElement name = driver.findElementById("loginName");
         name.sendKeys(loginName);
         WebElement pw = driver.findElementById("password");
@@ -80,6 +87,8 @@ public class WDriver {
 
         WebElement loginbutton = driver.findElementById("loginbutton");
         loginbutton.click();
+
+        getPath();
 
         cookies = driver.manage().getCookies();
         itr = cookies.iterator();
@@ -94,12 +103,6 @@ public class WDriver {
                     + "\n\tSecure: " + c.isSecure());
         }
 
-        waitNext();
-    }
-
-    public void waitNext() {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in ));
-        System.out.print("请输入数据：");
     }
 
     public String getPath() {
@@ -193,3 +196,5 @@ public class WDriver {
     }
 
 }
+
+
