@@ -15,6 +15,7 @@
         <module>frame</module>
         <module>management</module>
         <module>coder</module>
+        <module>flink</module>
     </modules>
 
     <properties>

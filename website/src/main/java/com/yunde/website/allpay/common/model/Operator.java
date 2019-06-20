@@ -12,7 +12,6 @@ import java.util.Set;
 public class Operator extends BaseOperator<Operator> {
 	public static final Operator dao = new Operator();
 
-	@Override
 	public Set<Enum<?>> cacheSet() {
 		return new HashSet<Enum<?>>(){{
 			add(c.openId);

@@ -1,7 +1,5 @@
 package com.yunde.spider.chromedriver;
 
-import org.apache.poi.ss.usermodel.Workbook;
-import org.easy.excel.ExcelContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
@@ -10,7 +8,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -41,20 +41,20 @@ public class WDriver {
 //        wDriver.exportExl();
     }
 
-    public void exportExl() {
-        try {
-            OutputStream ops = new FileOutputStream("F:/名单.xlsx");
-            ExcelContext context = new ExcelContext("candidate.xml");
-            Workbook workbook = context.createExcel("candidate", candidates);
-            workbook.write(ops);
-            ops.close();
-            workbook.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public void exportExl() {
+//        try {
+//            OutputStream ops = new FileOutputStream("F:/名单.xlsx");
+//            ExcelContext context = new ExcelContext("candidate.xml");
+//            Workbook workbook = context.createExcel("candidate", candidates);
+//            workbook.write(ops);
+//            ops.close();
+//            workbook.close();
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     /*登录页面*/
     public void login(String loginName, String password) {

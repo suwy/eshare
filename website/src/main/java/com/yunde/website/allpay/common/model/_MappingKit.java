@@ -16,7 +16,7 @@ import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 public class _MappingKit {
 
 	public static void mapping(ActiveRecordPlugin arp) {
-		arp.addMapping("operators", "id", Operator.class);
+//		arp.addMapping("operators", "id", Operator.class);
 		arp.addMapping("sys_menu", "id", SysMenu.class);
 		arp.addMapping("sys_resources", "id", SysResource.class);
 		arp.addMapping("sys_role", "id", SysRole.class);
