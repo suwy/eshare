@@ -7,10 +7,6 @@ import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.util.Collector;
-import org.json.JSONObject;
-
-import java.io.UnsupportedEncodingException;
-import java.time.LocalDateTime;
 
 /**
  * @author laisy
@@ -42,25 +38,25 @@ public class SocketWindowWordCount {
                 .flatMap(new FlatMapFunction<String, WordWithCount>() {
                     @Override
                     public void flatMap(String value, Collector<WordWithCount> out) {
-//                        for (String word : value.split("\\s")) {
-//                            out.collect(new WordWithCount(word, 1L));
-//                        }
-                        try {
-                            String val = new String(value.getBytes("GBK"),"UTF-8");
-                            System.out.println("val="+val);
-                            JSONObject json = new JSONObject(val);
-                            for (Object key : json.keySet()) {
-                                String word = json.opt(key.toString()).toString();
-                                out.collect(new WordWithCount(word, 1L));
-                            }
-                        } catch (UnsupportedEncodingException e) {
-                            e.printStackTrace();
+                        for (String word : value.split("\\s")) {
+                            out.collect(new WordWithCount(word, 1L));
                         }
+//                        try {
+//                            String val = new String(value.getBytes("GBK"),"UTF-8");
+//                            System.out.println("val="+val);
+//                            JSONObject json = new JSONObject(val);
+//                            for (Object key : json.keySet()) {
+//                                String word = json.opt(key.toString()).toString();
+//                                out.collect(new WordWithCount(word, 1L));
+//                            }
+//                        } catch (UnsupportedEncodingException e) {
+//                            e.printStackTrace();
+//                        }
 
                     }
                 })
                 .keyBy("word")
-                .timeWindow(Time.seconds(5), Time.seconds(1))
+                .timeWindow(Time.seconds(1), Time.seconds(1))
                 .reduce(new ReduceFunction<WordWithCount>() {
                     @Override
                     public WordWithCount reduce(WordWithCount a, WordWithCount b) {
@@ -69,10 +65,11 @@ public class SocketWindowWordCount {
                 });
 
         // print the results with a single thread, rather than in parallel
-        System.out.println(LocalDateTime.now());
-        windowCounts.print().setParallelism(1);
+        windowCounts.print().setParallelism(6);
 
-        env.execute("Socket Window WordCount");
+//        env.execute("Socket Window WordCount");
+        //改为这个
+        System.out.println(env.getExecutionPlan());
     }
 
     // Data type for words with count
