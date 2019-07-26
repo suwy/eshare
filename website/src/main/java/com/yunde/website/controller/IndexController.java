@@ -2,7 +2,6 @@ package com.yunde.website.controller;
 
 import com.yunde.frame.log.YundeLog;
 import com.yunde.frame.tools.ResultMsg;
-import com.yunde.website.annotation.MyAnnott;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,7 +44,6 @@ public class IndexController extends BaseController {
         return formateData(list, keys);
     }
 
-    @MyAnnott(method = "GET", url ="/login")
     public ResultMsg login() {
         return ResultMsg.success("login");
     }
