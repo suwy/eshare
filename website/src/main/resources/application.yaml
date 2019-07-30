@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: website
+  aop:
+    proxy-target-class: true # aop 开启
+
+server:
+  port: 8001
+
+logging:
+  level:
+    root: INFO
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] [%logger{50} %line] - %msg%n'
+#    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] [%logger{50} %line] - %msg%n'
