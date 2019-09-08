@@ -3,6 +3,41 @@ spring:
     name: website
   aop:
     proxy-target-class: true # aop 开启
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    primary:
+      url: jdbc:mysql://localhost:3306/website?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&useSSL=false
+    username: uapp
+    password: Fsxxb123=
+    driverClassName: com.mysql.jdbc.Driver
+    initialSize: 1
+    minIdle: 1
+    maxActive: 5
+    maxWait: 10000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat,wall,log4j
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connectionProperties:
+      druid:
+        stat:
+          mergeSql: true
+          slowSqlMillis: 5000
+    removeAbandoned: true
+    removeAbandonedTimeout: 20
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      dialect: org.hibernate.dialect.MySQL5Dialect
 
 server:
   port: 8001
