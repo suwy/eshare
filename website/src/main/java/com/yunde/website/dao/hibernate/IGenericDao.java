@@ -1,4 +1,4 @@
-package com.yunde.website.dao;
+package com.yunde.website.dao.hibernate;
 
 import java.io.Serializable;
 import java.util.*;

@@ -6,7 +6,6 @@ import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.transaction.interceptor.TransactionInterceptor;
 
@@ -17,7 +16,7 @@ import java.util.Properties;
 /**
  * Created by Administrator on 2018/5/7.
  */
-@Configuration
+//@Configuration
 public class HibernateTransactTemplate {
 
     @Bean(name = "transactionManager")

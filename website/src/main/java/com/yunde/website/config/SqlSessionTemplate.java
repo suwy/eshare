@@ -3,7 +3,6 @@ package com.yunde.website.config;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
@@ -14,7 +13,7 @@ import java.util.Properties;
 /**
  * Created by Administrator on 2018/5/7.
  */
-@Configuration
+//@Configuration
 public class SqlSessionTemplate {
 
     @Primary
@@ -46,7 +45,7 @@ public class SqlSessionTemplate {
         localSessionFactoryBean.setHibernateProperties(hibernateProperties);
 
         /*扫描hibernate注解配置的entity*/
-        localSessionFactoryBean.setPackagesToScan("org.fsdcic.lzda.entity");
+        localSessionFactoryBean.setPackagesToScan("com.yunde.website.entity");
 
         if(localSessionFactoryBean.getObject() == null){
             try {

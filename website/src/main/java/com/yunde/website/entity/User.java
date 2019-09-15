@@ -1,5 +1,8 @@
 package com.yunde.website.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,10 +16,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
+@ApiModel(value="User对象", description="User")
 public class User {
 
+    @ApiModelProperty(value="id",name="id",example="20190101001")
     private String id;
+    @ApiModelProperty(value="账号",name="name",example="suwy")
     private String name;
+    @ApiModelProperty(value="密码",name="password",example="12345678")
     private String password;
 
     @Id

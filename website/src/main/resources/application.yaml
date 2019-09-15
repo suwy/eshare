@@ -48,3 +48,18 @@ logging:
   pattern:
     console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] [%logger{50} %line] - %msg%n'
 #    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] [%logger{50} %line] - %msg%n'
+
+#################################### Swagger start ####################################
+# swagger配置
+swagger:
+  base:
+    package: com.yunde.website.controller
+  contact:
+    email: suwy2013@gmail.com
+    name: suwy
+    url: ''
+  description: '后台网页框架'
+  title: eshare-website
+  url: ''
+  version: 1.0
+#################################### Swagger end #####################################
