@@ -22,6 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <springboot.version>1.4.5.RELEASE</springboot.version>
         <spring.cloud.version>Camden.SR6</spring.cloud.version>
+        <swagger2.version>2.6.1</swagger2.version>
     </properties>
 
     <dependencyManagement>

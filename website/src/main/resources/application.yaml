@@ -63,3 +63,27 @@ swagger:
   url: ''
   version: 1.0
 #################################### Swagger end #####################################
+
+############################### Redis 公共配置 start ###############################
+---
+spring:
+  redis:
+    jedis:
+      pool:
+        max-active: 2000
+        max-wait: -1ms
+        min-idle: 8
+        max-idle: 200
+    timeout: 10s
+    lettuce:
+      pool:
+        max-active: 200
+        max-idle: 8
+        max-wait: 10s
+        min-idle: 2
+      shutdown-timeout: 3s
+    database: 0
+      host: localhost
+      password:
+      port: 6379
+############################### Redis 公共配置 end ##################################

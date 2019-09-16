@@ -11,27 +11,50 @@ public class ResultMsg<T> implements Serializable {
 
     private String code;
     private String message;
-    private T object;
+    private T data;
 
-    public ResultMsg(String code, T object) {
+    ResultMsg(String code, T object) {
         this.code = code;
-        this.object = object;
+        this.data = object;
     }
 
-    public ResultMsg(String code, String message) {
+    ResultMsg(String code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    public static ResultMsg failure(Object object) {
-        return new ResultMsg(Const.CODE_FAILURE, object);
+    public static ResultMsg failure(String message) {
+        return new ResultMsg(Const.CODE_FAILURE, message);
     }
 
-    public static ResultMsg success(Object object) {
-        return new ResultMsg(Const.CODE_SUCCESS, object);
+    public static <T> ResultMsg success(T data) {
+        return new ResultMsg(Const.CODE_SUCCESS, data);
     }
 
-    public <T> T getData() {
-        return (T) object;
+    public String getCode() {
+        return code;
+    }
+
+    public ResultMsg<T> setCode(String code) {
+        this.code = code;
+        return this;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public ResultMsg<T> setMessage(String message) {
+        this.message = message;
+        return this;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public ResultMsg<T> setData(T data) {
+        this.data = data;
+        return this;
     }
 }
