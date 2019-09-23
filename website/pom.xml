@@ -24,10 +24,10 @@
             <!--</exclusions>-->
         </dependency>
         <!--SpringBoot单元测试组件-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-test</artifactId>-->
+<!--        </dependency>-->
         <!--Spring cloud的Feign组件库-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -89,6 +89,12 @@
             <!--<version>5.2</version>-->
         <!--</dependency>-->
 
+        <dependency>
+            <groupId>com.yunde</groupId>
+            <artifactId>frame</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
         <!-- swagger start -->
         <dependency>
             <groupId>io.springfox</groupId>
@@ -104,12 +110,7 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <artifactId>spring-boot-starter-redis</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.data</groupId>-->
-<!--            <artifactId>spring-data-redis</artifactId>-->
-<!--            <version>2.1.10.RELEASE</version>-->
-<!--        </dependency>-->
     </dependencies>
 </project>

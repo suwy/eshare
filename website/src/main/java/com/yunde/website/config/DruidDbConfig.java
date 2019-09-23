@@ -67,8 +67,8 @@ public class DruidDbConfig {
     @Value("${spring.datasource.poolPreparedStatements}")
     private boolean poolPreparedStatements;
 
-    @Value("${spring.datasource.maxPoolPreparedStatementPerConnectionSize}")
-    private int maxPoolPreparedStatementPerConnectionSize;
+    @Value("${spring.datasource.maxOpenPreparedStatements}")
+    private int maxOpenPreparedStatements;
 
     @Value("${spring.datasource.filters}")
     private String filters;
@@ -95,7 +95,7 @@ public class DruidDbConfig {
         datasource.setTestOnBorrow(testOnBorrow);
         datasource.setTestOnReturn(testOnReturn);
         datasource.setPoolPreparedStatements(poolPreparedStatements);
-        datasource.setMaxPoolPreparedStatementPerConnectionSize(maxPoolPreparedStatementPerConnectionSize);
+        datasource.setMaxOpenPreparedStatements(maxOpenPreparedStatements);
         datasource.setRemoveAbandoned(true);
         datasource.setRemoveAbandonedTimeout(1800);
         try {

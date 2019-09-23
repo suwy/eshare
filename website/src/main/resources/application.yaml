@@ -12,17 +12,17 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     initialSize: 1
     minIdle: 1
-    maxActive: 5
-    maxWait: 10000
+    maxActive: 20
+    maxWait: 60000
     timeBetweenEvictionRunsMillis: 60000
     minEvictableIdleTimeMillis: 300000
-    validationQuery: SELECT 1 FROM DUAL
+    validationQuery: select 'x'
     testWhileIdle: true
     testOnBorrow: false
     testOnReturn: false
     poolPreparedStatements: true
-    maxPoolPreparedStatementPerConnectionSize: 20
-    filters: stat,wall,log4j
+    maxOpenPreparedStatements: 20
+    filters: stat
     # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
     connectionProperties:
       druid:
@@ -68,22 +68,15 @@ swagger:
 ---
 spring:
   redis:
-    jedis:
-      pool:
-        max-active: 2000
-        max-wait: -1ms
-        min-idle: 8
-        max-idle: 200
-    timeout: 10s
-    lettuce:
-      pool:
-        max-active: 200
-        max-idle: 8
-        max-wait: 10s
-        min-idle: 2
-      shutdown-timeout: 3s
     database: 0
-      host: localhost
-      password:
-      port: 6379
+    host: localhost
+    password: ~
+    port: 6379
+    timeout: 0
+    pool:
+      max-active: 8
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
+
 ############################### Redis 公共配置 end ##################################
