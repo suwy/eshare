@@ -4,5 +4,4 @@
  * @decription:
  */
 public class TestFormateData {
-
 }
